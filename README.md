@@ -14,20 +14,6 @@ It builds a knowledge base from **academic papers (PDF)** and **lecture slides (
 - Retrieves the most relevant chunks for a question
 - Uses an open-source LLM to generate answers
 
----
-
-## Project Structure
-
-src/
-├── ingestion/
-│ ├── papers/
-│ └── slides/
-├── retrieval/
-data/ # ignored by git
-README.md
-requirements.txt
-
----
 
 ## Setup
 
@@ -74,6 +60,4 @@ Designed for learning and experimentation
 
 License
 Educational use only.
-
-Copy code
 
