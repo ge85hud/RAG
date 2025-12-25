@@ -1,5 +1,5 @@
 from pathlib import Path
-from src.ingestion.slides.persistent_vector_store import ingest_slides
+from src.ingestion.slides.slide_chunker import extract_slides
 
 
 def main():
@@ -7,9 +7,17 @@ def main():
     pptx_path = project_root / "data" / "slides" / "sample.pptx"
 
     if not pptx_path.exists():
-        raise FileNotFoundError(f"Slide file not found: {pptx_path}")
+        raise FileNotFoundError(f"Missing slide file: {pptx_path}")
 
-    ingest_slides(pptx_path)
+    chunks = extract_slides(pptx_path)
+
+    print(f"\nTotal slides extracted: {len(chunks)}\n")
+
+    for chunk in chunks:
+        print("=" * 80)
+        print(f"Slide #: {chunk['metadata']['slide_number']}")
+        print(chunk["content"])
+        print()
 
 
 if __name__ == "__main__":
